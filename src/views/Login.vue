@@ -8,7 +8,7 @@
       <input v-model="passwd" type="password" placeholder="Enter Password" name="psw" required>
       <br>
 
-      <b-button type="submit" variant="success">Login</b-button>
+      <b-button type="submit" variant="success" style="max-width: 15px">Login</b-button>
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
