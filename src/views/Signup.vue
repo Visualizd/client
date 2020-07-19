@@ -9,12 +9,18 @@
         <div class="form">
             <div class="contents">
               <form>
-                  <h3>Login</h3>
+                  <h3>Sign Up</h3>
 
                   <div class="form-group">
-                      <label>Username</label>
+                      <label>Full Name</label>
                       <input type="text" class="form-control form-control-lg"/>
                   </div>
+
+                  <div class="form-group">
+                      <label>Email address</label>
+                      <input type="email" class="form-control form-control-lg" />
+                  </div>
+
                   <div class="form-group">
                       <label>Password</label>
                       <input type="password" class="form-control form-control-lg" />
