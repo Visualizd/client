@@ -5,12 +5,9 @@
     </div> -->
     <b-container id="body">
       <h2 class="mt-3 mb-3">Dashboard</h2>
-      <b-card no-body>
+      <b-card no-body class="shadow-sm">
         <b-card-body class="pb-0">
-          <div>
-            <h3 style="display: inline-block;">Projects</h3>
-            <!-- <a class="float-right pt-2" href="/projects">All Projects ></a> -->
-          </div>
+          <b-card-title>Projects</b-card-title>
           <b-card-group deck>
             <b-card img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top no-body><!-- no-body is necessary for proper formatting of footer.  Body is manually added later. -->
               <b-card-footer>
@@ -34,14 +31,13 @@
             </b-card>
           </b-card-group>
         </b-card-body>
-        <font-awesome-icon icon="chevron-down" class="text-center w-100 m-1" style="font-size: 2em;" />
+        <div class="text-center">
+          <font-awesome-icon icon="chevron-down" class="m-1" style="font-size: 2em;" />
+        </div>
       </b-card>
-      <b-card no-body class="mt-4">
+      <b-card no-body class="mt-4 shadow-sm">
         <b-card-body class="pb-0">
-          <div>
-            <h3 style="display: inline-block;">Datasets</h3>
-            <!-- <a class="float-right pt-2" href="/projects">All Projects ></a> -->
-          </div>
+          <b-card-title>Datasets</b-card-title>
           <b-card-group deck>
             <b-card img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top no-body><!-- no-body is necessary for proper formatting of footer.  Body is manually added later. -->
               <b-card-footer>
@@ -65,8 +61,11 @@
             </b-card>
           </b-card-group>
         </b-card-body>
-        <font-awesome-icon icon="chevron-down" class="text-center w-100 m-1" style="font-size: 2em;" />
+        <div class="text-center">
+          <font-awesome-icon icon="chevron-down" class="m-1" style="font-size: 2em;" />
+        </div>
       </b-card>
+      <br>
     </b-container>
   </div>
 </template>
