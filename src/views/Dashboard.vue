@@ -1,67 +1,74 @@
 <template>
-    <div style="background-color: lightgray">
-        
-        <div>
-            <div class="Row">
-                <div class="Column">   
-                    <div style="width: 50px"></div>
-                </div>
-                
-                <div class="Column">
-                    <h5 style="text-align: left">Overview</h5>
-                    <h4 style="text-align: left">Dashboard</h4>
-                </div>
-
-                <div class="Column">
-                    <b-container fluid>
-                        <b-row>
-                            <b-col>
-                                <b-card-group deck>
-                                    <b-card title="Projects" style="max-width: 30rem; text-align: left">
-                                        <b-card-group deck>
-                                            <b-card title="Project 1" style="max-width: 15rem; text-align: left">
-                                                <b-card-text>Header and footers using props.</b-card-text>
-                                                <b-button href="#" variant="primary">Go somewhere</b-button>
-                                            </b-card>
-
-                                            <b-card title="Project 2" style="max-width: 15rem; text-align: left">
-                                            <b-card-text>Header and footers using slots.</b-card-text>
-                                                <b-button href="#" variant="primary">Go somewhere</b-button>
-                                            </b-card>
-                                        </b-card-group>
-                                        <div style="height: 10px"></div>
-                                        <b-button pill variant="outline-primary" style="text-align: right">More...</b-button>
-                                    </b-card>
-                                </b-card-group>
-                            </b-col>
-                            <b-col>
-                            <b-card-group deck>
-                                    <b-card title="Datasets" style="max-width: 30rem; text-align: left">
-                                        <b-card-group deck>
-                                            <b-card title="Dataset 1" style="max-width: 15rem; text-align: left">
-                                                <b-card-text>Header and footers using props.</b-card-text>
-                                                <b-button href="#" variant="primary">Go somewhere</b-button>
-                                            </b-card>
-
-                                            <b-card title="Dataset 2" style="max-width: 15rem; text-align: left">
-                                            <b-card-text>Header and footers using slots.</b-card-text>
-                                                <b-button href="#" variant="primary">Go somewhere</b-button>
-                                            </b-card>
-                                        </b-card-group>
-                                        <div style="height: 10px"></div>
-                                        <b-button pill variant="outline-primary" style="text-align: right">More...</b-button>
-                                    </b-card>
-                                </b-card-group>
-                            </b-col>
-                            <b-col>
-                                <div style="width=40px"></div>
-                            </b-col>
-                        </b-row>
-                    </b-container>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div>
+    <!-- <div id="sidebar">
+      test
+    </div> -->
+    <b-container id="body">
+      <h2 class="mt-3 mb-3">Dashboard</h2>
+      <b-card no-body>
+        <b-card-body class="pb-0">
+          <div>
+            <h3 style="display: inline-block;">Projects</h3>
+            <!-- <a class="float-right pt-2" href="/projects">All Projects ></a> -->
+          </div>
+          <b-card-group deck>
+            <b-card img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top no-body><!-- no-body is necessary for proper formatting of footer.  Body is manually added later. -->
+              <b-card-footer>
+                <b><a href="/link/to/project">New Project</a></b>
+              </b-card-footer>
+            </b-card>
+            <b-card img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top no-body><!-- no-body is necessary for proper formatting of footer.  Body is manually added later. -->
+              <b-card-footer>
+                <b><a href="/link/to/project">Project 1</a></b>
+              </b-card-footer>
+            </b-card>
+            <b-card img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top no-body><!-- no-body is necessary for proper formatting of footer.  Body is manually added later. -->
+              <b-card-footer>
+                <b><a href="/link/to/project">Project 2</a></b>
+              </b-card-footer>
+            </b-card>
+            <b-card img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top no-body><!-- no-body is necessary for proper formatting of footer.  Body is manually added later. -->
+              <b-card-footer>
+                <b><a href="/link/to/project">Project 3</a></b>
+              </b-card-footer>
+            </b-card>
+          </b-card-group>
+        </b-card-body>
+        <font-awesome-icon icon="chevron-down" class="text-center w-100 m-1" style="font-size: 2em;" />
+      </b-card>
+      <b-card no-body class="mt-4">
+        <b-card-body class="pb-0">
+          <div>
+            <h3 style="display: inline-block;">Datasets</h3>
+            <!-- <a class="float-right pt-2" href="/projects">All Projects ></a> -->
+          </div>
+          <b-card-group deck>
+            <b-card img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top no-body><!-- no-body is necessary for proper formatting of footer.  Body is manually added later. -->
+              <b-card-footer>
+                <b><a href="/link/to/project">New Dataset</a></b>
+              </b-card-footer>
+            </b-card>
+            <b-card img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top no-body><!-- no-body is necessary for proper formatting of footer.  Body is manually added later. -->
+              <b-card-footer>
+                <b><a href="/link/to/project">Dataset 1</a></b>
+              </b-card-footer>
+            </b-card>
+            <b-card img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top no-body><!-- no-body is necessary for proper formatting of footer.  Body is manually added later. -->
+              <b-card-footer>
+                <b><a href="/link/to/project">Dataset 2</a></b>
+              </b-card-footer>
+            </b-card>
+            <b-card img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top no-body><!-- no-body is necessary for proper formatting of footer.  Body is manually added later. -->
+              <b-card-footer>
+                <b><a href="/link/to/project">Dataset 3</a></b>
+              </b-card-footer>
+            </b-card>
+          </b-card-group>
+        </b-card-body>
+        <font-awesome-icon icon="chevron-down" class="text-center w-100 m-1" style="font-size: 2em;" />
+      </b-card>
+    </b-container>
+  </div>
 </template>
 
 <script>
@@ -74,42 +81,14 @@ export default {
 }
 </script>
 
-<style scoped>
-
-#App {
-    display: absolute;
-}
-
-sidebar-menu {
-    position: static
-}
-
-h1 {
-    text-align: left
-}
-
-.Row {
-    display: table;
-    width: 100%; /*Optional*/
-    table-layout: fixed; /*Optional*/
-    border-spacing: 10px; /*Optional*/
-}
-.Column {
-    /* display: table-cell; */
-}
-
-.wrapper {
-    display: flex;
-    align-items: stretch;
-}
+<style scoped lang="scss">
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
-}
-
-#sidebar.active {
-    margin-left: -250px;
+  position: absolute;
+  background-color: gray;
+  width: 12em;
+  top: 0;
+  bottom: 0;
 }
 
 </style>
