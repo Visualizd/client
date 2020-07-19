@@ -1,5 +1,5 @@
 <template>
-<b-container fluid>
+<b-container class="backdrop" fluid>
   <div style="height: 60px">
   </div>
   <b-row>
@@ -20,11 +20,11 @@
                       <input type="password" class="form-control form-control-lg" />
                   </div>
 
-                  <button type="submit" class="btn btn-dark btn-lg btn-block">Sign Up</button>
+                  <button type="submit" class="btn btn-dark btn-lg btn-block" @click="test">Sign Up</button>
 
                   <p>
                       Already registered 
-                      <router-link :to="{name: 'login'}">sign in?</router-link>
+                      <!-- <router-link :to="{name: 'login'}">sign in?</router-link> -->
                   </p>
               </form>
             </div>
@@ -37,12 +37,20 @@
 <script>
     export default {
         data() {
-            return {}
+            return {
+              test: function() {
+                console.log("hello world");
+              }
+            }
         }
     }
 </script>
 
 <style scoped>
+
+.backdrop {
+  background-color: lightgray;
+}
 
 .form {
   max-width: 450px;
