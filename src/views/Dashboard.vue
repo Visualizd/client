@@ -1,19 +1,20 @@
 <template>
   <div id="wrapper">
     <div id="sidebar" class="mt-4 ml-4 mr-0">
-      <b-card no-body>
+      <b-card no-body class="shadow-sm">
         <b-card-body class="p-2" style="width: 15em;">
           <nav class="nav nav-pills flex-column">
-            <a class="nav-link active" href="#">Dashboard</a>
-            <a class="nav-link" href="#">Projects</a>
-            <a class="nav-link" href="#">Datasets</a>
+            <a class="nav-link" href="/projects"><font-awesome-icon icon="user" class="mr-1" /> <span>Account</span></a>
+            <a class="nav-link active" href="/"><font-awesome-icon icon="tachometer-alt" class="mr-1" /> <span>Dashboard</span></a>
+            <a class="nav-link" href="/projects"><font-awesome-icon icon="file" class="mr-1" /> <span>Projects</span></a>
+            <a class="nav-link" href="/projects"><font-awesome-icon icon="database" class="mr-1" /> <span>Datasets</span></a>
           </nav>
         </b-card-body>
       </b-card>
     </div>
     <b-container class="mt-3">
       <div id="body">
-        <h2 class="pb-3">Dashboard</h2>
+        <h2 class="pb-2">Dashboard</h2>
         <b-card no-body class="shadow-sm">
           <b-card-body class="pb-0">
             <b-card-title>Projects</b-card-title>
