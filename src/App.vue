@@ -36,7 +36,7 @@
 <style scoped>
 
 #app {
-    background-color: white;
+  background-color: white;
 }
 
 </style>
