@@ -10,10 +10,23 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
- faChevronDown
+  faChevronRight,
+  faUserCircle,
+  faUser,
+  faTachometerAlt,
+  faDatabase,
+  faFile
 } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faChevronDown)
+library.add(
+  faChevronRight,
+  faUserCircle,
+  faUser,
+  faTachometerAlt,
+  faDatabase,
+  faFile
+)
+
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
