@@ -13,18 +13,21 @@
 
                   <div class="form-group">
                       <label>Username</label>
-                      <input type="text" class="form-control form-control-lg"/>
+                      <input v-model="username" type="text" class="form-control form-control-lg"/>
                   </div>
                   <div class="form-group">
                       <label>Password</label>
-                      <input type="password" class="form-control form-control-lg" />
+                      <input v-model="password" type="password" class="form-control form-control-lg" />
                   </div>
 
-                  <button type="submit" class="btn btn-dark btn-lg btn-block" @click="test">Sign Up</button>
+                 <b-button @click="login" variant="dark">Submit</b-button>
 
                   <p>
                       Already registered 
                       <!-- <router-link :to="{name: 'login'}">sign in?</router-link> -->
+                  </p>
+                  <p>
+                    {{ username }}
                   </p>
               </form>
             </div>
@@ -37,11 +40,24 @@
 <script>
     export default {
         data() {
-            return {
-              test: function() {
-                console.log("hello world");
-              }
-            }
+          return {
+            username: "", 
+            password: "", 
+          }
+        },
+        
+        methods: {
+          test() {
+            this.username = "Test"
+          },
+
+          login() {
+            const baseURI = 'https://jsonplaceholder.typicode.com/users'
+            this.$http.get(baseURI)
+            .then((result) => {
+              this.username = result;
+            })
+          }
         }
     }
 </script>
