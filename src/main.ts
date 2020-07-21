@@ -7,7 +7,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
-  faChevronDown,
+  faChevronRight,
   faUserCircle,
   faUser,
   faTachometerAlt,
@@ -16,7 +16,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
-  faChevronDown,
+  faChevronRight,
   faUserCircle,
   faUser,
   faTachometerAlt,
