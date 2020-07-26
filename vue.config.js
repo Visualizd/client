@@ -1,7 +1,7 @@
 module.exports = {
   devServer: {
     allowedHosts: [
-      '.ws-us02.gitpod.io'
-    ]
-  }
-}
+      '.ws-us02.gitpod.io',
+    ],
+  },
+};
