@@ -62,12 +62,12 @@ const getProductionConfig = () => {
   };
 
   return Object.assign({
-    // enable sub-resource integrity check as our executables are deployed on other's infra
-    // there were records where jsdelivr was poisoned
-    // see: https://github.com/jsdelivr/jsdelivr/issues/18049
+        // enable sub-resource integrity check as our executables are deployed on other's infra
+        // there were records where jsdelivr was poisoned
+        // see: https://github.com/jsdelivr/jsdelivr/issues/18049
         integrity: true,
         publicPath: assetPath,
-    // necessary for assests hosted by jsdelivr cdn to work as it counts as cors
+        // necessary for assests hosted by jsdelivr cdn to work as it counts as cors
         crossorigin: "anonymous",
       },
       overrideBaseURLTemplate
