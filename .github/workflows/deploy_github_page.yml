@@ -6,12 +6,12 @@ name: Deploy github pages
 on: [workflow_dispatch, push]
 
 jobs:
-  gh-pages-deploy:
+  build-production-files:
     name: Deploy to gh-pages
     runs-on: ubuntu-latest
     steps:
       - name: Setup assest branch variable
-        run: "echo ::set-env name=ASSET_BRANCH::deploy-asset"
+        run: echo ::set-env name=ASSET_BRANCH::deploy-asset
 
       - name: Setup Node.js for use with actions
         uses: actions/setup-node@v1.1.0
@@ -30,5 +30,20 @@ jobs:
         run: npm run build:prod
         env:
           PUBLIC_PATH: "https://cdn.jsdelivr.net/gh/${{ github.repository }}@$ASSET_BRANCH/"
+      
+      - name: Move assets to root folder
+        run: mv ./dist/asset ./asset
+      
+      - name: Upload assets
+        uses: actions/upload-artifact@v2
+        with:
+          name: assets
+          path: ./asset
+      
+      - name: Upload deploy file
+        uses: actions/upload-artifact@v2
+        with:
+          name: deploy
+          path: ./dist
 
-      # TODO: Copying asset, push to asset branch & github-pages branch
+      # TODO: Deploy asset and deploy files to github pages and jsdelivr branch
