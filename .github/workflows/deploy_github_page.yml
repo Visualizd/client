@@ -43,7 +43,36 @@ jobs:
       - name: Upload deploy file
         uses: actions/upload-artifact@v2
         with:
-          name: deploy
+          name: deployment-file
           path: ./dist
-
-      # TODO: Deploy asset and deploy files to github pages and jsdelivr branch
+          
+  commit-assets:
+    name: Commit Assets
+    runs-on: ubuntu-latest
+    needs: [build-production-files]
+    steps:
+      - name: Setup assest branch variable
+        run: echo ::set-env name=ASSET_BRANCH::deploy-asset
+      
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      
+      - name: Config git
+        run: git config user.name "Assest Bot"
+        
+      - name: Switch Branch
+        run: git checkout --orphan $ASSET_BRANCH
+      
+      - name: Download Assests
+        uses: actions/download-artifact@v2
+        with:
+          name: assets
+      
+      - name: Commit Assests
+        run: |
+          git --work-tree assets add --all
+          git --work-tree assets commit -m "Compiled deployment assest for $(git rev-parse --short $GITHUB_SHA) uwu"
+          
+      - name: Push to Github
+        run: git push origin HEAD:${ASSET_BRANCH} --force
+      
