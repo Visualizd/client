@@ -68,8 +68,10 @@ jobs:
           name: assets
           path: ./assets
         
-      - name: Display directory structure (for debuging)
-        run: ls -R
+      - name: Debuging output
+        run: |
+          git diff --stat
+          ls -R
         
       - name:  Add assests to git
         run: git add ./assets
