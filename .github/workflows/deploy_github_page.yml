@@ -68,17 +68,15 @@ jobs:
           name: assets
           path: ./assets
         
-      - name: Debuging output
-        run: |
-          git diff --stat
-          ls -R
+      - name: List directory (for debugging)
+        run: ls -R
         
       - name:  Add assests to git
         run: git add ./assets
           
       - name: Commit and push assests if necessary
         run: |
-          if [[ $(git diff --stat) != '' ]]; then
+          if [[ $(git status --short ./assests) != '' ]]; then
             git commit -m "Compiled deployment assest for $(git rev-parse --short $GITHUB_SHA) (0w0)"
             git push origin HEAD:${ASSET_BRANCH} --force
           else
@@ -111,7 +109,7 @@ jobs:
         
       - name: Commit and push deployment if necessary
         run: |
-          if [[ $(git diff --stat) != '' ]]; then
+          if [[ $(git status --short) != '' ]]; then
             git commit -m "Compiled deployment for $(git rev-parse --short $GITHUB_SHA) (0w0)"
             git push origin HEAD:gh-pages --force
           else
