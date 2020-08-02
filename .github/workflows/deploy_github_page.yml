@@ -32,13 +32,13 @@ jobs:
           PUBLIC_PATH: "https://cdn.jsdelivr.net/gh/${{ github.repository }}@$ASSET_BRANCH/"
       
       - name: Move assets to root folder
-        run: mv ./dist/asset ./asset
+        run: mv ./dist/assets ./assets
       
       - name: Upload assets
         uses: actions/upload-artifact@v2
         with:
           name: assets
-          path: ./asset
+          path: ./assets
       
       - name: Upload deploy file
         uses: actions/upload-artifact@v2
