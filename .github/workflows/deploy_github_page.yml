@@ -77,9 +77,38 @@ jobs:
       - name: Commit and push assests if necessary
         run: |
           if [ $(git diff --stat) != '' ]; then
-            git add --all
             git commit -m "Compiled deployment assest for $(git rev-parse --short $GITHUB_SHA) (uwu)"
             git push origin HEAD:${ASSET_BRANCH} --force
+          else
+            echo "No need to commit as there's no changes"
+          fi
+
+  deploy-github-page:
+    name: Deploy to github pages branch
+    runs-on: ubuntu-latest
+    needs: [build-production-files, commit-assets]
+    steps:
+      
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      
+      - name: Create orphan github pages branch
+        run: git checkout --orphan gh-pages
+        
+      - name: Download deployment files
+        uses: actions/download-artifact@v2
+        with:
+          name: deployment-file
+          path: ./dep
+        
+      - name: Add files to git
+        run: git --work-tree dep add --all
+        
+      - name: Commit and push deployment if necessary
+        run: |
+          if [ $(git diff --stat) != '' ]; then
+            git commit -m "Compiled deployment for $(git rev-parse --short $GITHUB_SHA) (0w0)"
+            git push origin HEAD:gh-pages --force
           else
             echo "No need to commit as there's no changes"
           fi
