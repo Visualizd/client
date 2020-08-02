@@ -70,14 +70,16 @@ jobs:
         
       - name: Display directory structure (for debuging)
         run: ls -R
-          
-      - name: Add assests to git
+        
+      - name:  Add assests to git
         run: git add --all
-      
-      - name: Commit Assests
+          
+      - name: Commit and push assests if necessary
         run: |
-          git commit -m "Compiled deployment assest for $(git rev-parse --short $GITHUB_SHA) (uwu)"
-          
-      - name: Push to Github
-        run: git push origin HEAD:${ASSET_BRANCH} --force
-          
+          if [ $(git diff --stat) != '' ] then
+            git add --all
+            git commit -m "Compiled deployment assest for $(git rev-parse --short $GITHUB_SHA) (uwu)"
+            git push origin HEAD:${ASSET_BRANCH} --force
+          else
+            echo "No need to commit as there's no changes"
+          fi
