@@ -76,7 +76,7 @@ jobs:
           
       - name: Commit and push assests if necessary
         run: |
-          if [ $(git diff --stat) != '' ] then
+          if [ $(git diff --stat) != '' ]; then
             git add --all
             git commit -m "Compiled deployment assest for $(git rev-parse --short $GITHUB_SHA) (uwu)"
             git push origin HEAD:${ASSET_BRANCH} --force
