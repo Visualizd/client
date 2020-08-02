@@ -1,3 +1,7 @@
+const baseConfig = {
+  assetsDir: "assets",
+}
+
 const getDevConfig = () => {
   return {
     devServer: {
@@ -17,7 +21,7 @@ const getProductionConfig = () => {
 }
 
 if (process.env.NODE_ENV === "production") {
-  module.exports = getProductionConfig();
+  module.exports = Object.assign({}, baseConfig, getProductionConfig());
 } else {
-  module.exports = getDevConfig();
+  module.exports = Object.assign({}, baseConfig, getDevConfig());
 }
