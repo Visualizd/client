@@ -21,6 +21,15 @@ jobs:
 
       - name: Install npm dependency
         uses: bahmutov/npm-install@v1
+        
+      - name: Load build cache
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules/.cache
+          # anything should help
+          # if it causes trouble,
+          # just increment the trailling number
+          key: build-cache-0 
 
       - name: Run npm build script (prod, using jsdelivr)
         run: npm run build:prod
