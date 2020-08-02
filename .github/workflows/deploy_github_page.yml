@@ -76,7 +76,7 @@ jobs:
           
       - name: Commit and push assests if necessary
         run: |
-          if [ $(git diff --stat) != '' ]; then
+          if [[ $(git diff --stat) != '' ]]; then
             git commit -m "Compiled deployment assest for $(git rev-parse --short $GITHUB_SHA) (uwu)"
             git push origin HEAD:${ASSET_BRANCH} --force
           else
@@ -106,7 +106,7 @@ jobs:
         
       - name: Commit and push deployment if necessary
         run: |
-          if [ $(git diff --stat) != '' ]; then
+          if [[ $(git diff --stat) != '' ]]; then
             git commit -m "Compiled deployment for $(git rev-parse --short $GITHUB_SHA) (0w0)"
             git push origin HEAD:gh-pages --force
           else
