@@ -82,12 +82,12 @@ jobs:
           
       - name: Commit and push assests if necessary
         run: |
-         # if [[ $(git status --short ./assests) != '' ]]; then
+         if [ -n "$(git status --porcelain)" ]; then
             git commit -m "Compiled deployment assest for $(git rev-parse --short $GITHUB_SHA) (0w0)"
             git push origin HEAD:${ASSET_BRANCH} --force
-         # else
-         #   echo "No need to commit as there's no changes"
-         # fi
+         else
+           echo "No need to commit as there's no changes"
+         fi
 
   deploy-github-page:
     name: Deploy to github pages branch
