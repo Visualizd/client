@@ -56,29 +56,28 @@ jobs:
       
       - name: Checkout Repo
         uses: actions/checkout@v2
+        with:
+          ref: $ASSET_BRANCH
       
       - name: Config git
         run: git config user.name "Assest Bot"
-        
-      - name: Switch Branch
-        run: git checkout --orphan $ASSET_BRANCH
       
       - name: Download Assests
         uses: actions/download-artifact@v2
         with:
           name: assets
-          path: ./assets
+          path: .
         
       - name: Display directory structure (for debuging)
         run: ls -R
           
       - name: Add assests to git
-        run: git --work-tree assets add --all
+        run: git add --all
       
       - name: Commit Assests
         run: |
-          git --work-tree assets commit -m "Compiled deployment assest for $(git rev-parse --short $GITHUB_SHA) uwu"
+          git commit -m "Compiled deployment assest for $(git rev-parse --short $GITHUB_SHA) (uwu)"
           
       - name: Push to Github
         run: git push origin HEAD:${ASSET_BRANCH} --force
-      
+          
