@@ -71,8 +71,14 @@ jobs:
       - name: List directory (for debugging)
         run: ls -R
         
+      - name: git status before tracking (for debugging)
+        run: git status --short ./assests
+        
       - name:  Add assests to git
         run: git add ./assets
+        
+      - name: git status after tracking (for debugging)
+        run: git status --short ./assests
           
       - name: Commit and push assests if necessary
         run: |
