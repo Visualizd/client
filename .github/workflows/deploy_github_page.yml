@@ -3,11 +3,13 @@ name: Deploy github pages
 #    push:
 #      branches:
 #        - master
-on: [workflow_dispatch, push]
+on: 
+  workflow_dispatch:
+  push:
 
 jobs:
   build-production-files:
-    name: Deploy to gh-pages
+    name: Build assests and files for production
     runs-on: ubuntu-latest
     steps:
       - name: Setup assest branch variable
@@ -67,18 +69,6 @@ jobs:
         with:
           name: assets
           path: ./assets
-        
-      - name: List directory (for debugging)
-        run: ls -R
-        
-      - name: git status before tracking (for debugging)
-        run: git status --short ./assests
-        
-      - name:  Add assests to git
-        run: git add ./assets
-        
-      - name: git status after tracking (for debugging)
-        run: git status --short ./assests
           
       - name: Commit and push assests if necessary
         run: |
@@ -94,7 +84,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build-production-files, commit-assets]
     steps:
-      
       - name: Checkout Repo
         uses: actions/checkout@v2
       
@@ -115,9 +104,5 @@ jobs:
         
       - name: Commit and push deployment if necessary
         run: |
-          if [[ $(git status --short) != '' ]]; then
-            git commit -m "Compiled deployment for $(git rev-parse --short $GITHUB_SHA) (0w0)"
-            git push origin HEAD:gh-pages --force
-          else
-            echo "No need to commit as there's no changes"
-          fi
+          git commit -m "Compiled deployment for $(git rev-parse --short $GITHUB_SHA) (0w0)"
+          git push origin HEAD:gh-pages --force
