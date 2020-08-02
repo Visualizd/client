@@ -13,9 +13,11 @@ const getDevConfig = () => {
 }
 
 const getProductionConfig = () => {
+  const publicPath = process.env["PUBLIC_PATH"];
+  console.log(`Compiling with public path: ${publicPath}`);
   return {
     integrity: true,
-    publicPath: process.env["PUBLIC_PATH"],
+    publicPath: publicPath,
     crossorigin: "anonymous"
   }
 }
