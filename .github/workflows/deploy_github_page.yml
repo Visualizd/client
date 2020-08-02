@@ -67,10 +67,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: assets
+          
+      - name: Add assests to git
+        run: git --work-tree assets add --all
       
       - name: Commit Assests
         run: |
-          git --work-tree assets add --all
           git --work-tree assets commit -m "Compiled deployment assest for $(git rev-parse --short $GITHUB_SHA) uwu"
           
       - name: Push to Github
