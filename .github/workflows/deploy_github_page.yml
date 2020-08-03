@@ -42,13 +42,13 @@ jobs:
       - name: Upload assets
         uses: actions/upload-artifact@v2
         with:
-          name: "Assets-$GITHUB_SHA"
+          name: Assets-${{ GITHUB_SHA }}
           path: ./assets
       
       - name: Upload deploy file
         uses: actions/upload-artifact@v2
         with:
-          name: "Deployment-$GITHUB_SHA"
+          name: Deployment-${{ GITHUB_SHA }}
           path: ./dist
           
   commit-assets:
@@ -70,7 +70,7 @@ jobs:
       - name: Download Assests
         uses: actions/download-artifact@v2
         with:
-          name: "Assets-$GITHUB_SHA"
+          name: "Assets-${{ GITHUB_SHA }}"
           path: ./assets
           
       - name: Commit and push assests if necessary
@@ -99,7 +99,7 @@ jobs:
       - name: Download deployment files
         uses: actions/download-artifact@v2
         with:
-          name: "Deployment-$GITHUB_SHA"
+          name: Deployment-${{ GITHUB_SHA }}
           path: ./dep
         
       - name: Add files to git
