@@ -15,7 +15,7 @@ env:
 
 # Git bot name
   GIT_BOT_NAME: '"0w0 Deploy Bot"'
-  GIT_BOT_EMAIL: action@github.com
+  GIT_BOT_EMAIL: ""
   
 on: 
   workflow_dispatch:
