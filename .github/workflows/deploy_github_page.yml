@@ -1,5 +1,14 @@
 name: Deploy github pages
-
+env: 
+# necessary for building production code
+# Example: https://cdn.jsdelivr.net/gh/visualizd/client@deploy-asset/
+  ASSET_PATH: "https://cdn.jsdelivr.net/gh/${{ github.repository }}@$ASSET_BRANCH/"
+# This is for deploy on github pages, as they have a /client/ prefix
+# Example final url: visualizd.github.io/client/
+# Example variable value: client/
+  PUBLIC_PATH: "${{ github.event.repository.name }}/"
+# necessory for asset and deploy branching:
+  ASSET_BRANCH: deploy-asset
 on: 
   workflow_dispatch:
   push:
@@ -11,8 +20,6 @@ jobs:
     name: Build project (prod)
     runs-on: ubuntu-latest
     steps:
-      - name: Setup assest branch variable
-        run: echo ::set-env name=ASSET_BRANCH::deploy-asset
 
       - name: Checkout branch
         uses: actions/checkout@v2
@@ -31,8 +38,6 @@ jobs:
 
       - name: Run npm build script (prod, using jsdelivr)
         run: npm run build:prod
-        env:
-          ASSET_PATH: "https://cdn.jsdelivr.net/gh/${{ github.repository }}@$ASSET_BRANCH/"
       
       - name: Move assets to root folder
         run: mv ./dist/assets ./assets
@@ -54,8 +59,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build-production-files]
     steps:
-      - name: Setup assest branch variable
-        run: echo ::set-env name=ASSET_BRANCH::deploy-asset
       
       - name: Checkout Repo
         uses: actions/checkout@v2
