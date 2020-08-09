@@ -64,7 +64,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
-          ref: $ASSET_BRANCH
+          ref: ${{ env.ASSET_BRANCH }}
       
       - name: Config git
         run: git config user.name "0w0 Deploy Bot"
