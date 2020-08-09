@@ -1,6 +1,11 @@
 name: Deploy github pages
 
-env: 
+env:
+# --------------Runtime config------------------------------------------------------------
+#  Vue.js router's mode, set to hash as github pages
+#  do not support "any" path matching yet
+  ROUTER_MODE: hash
+
 # --------------Necessory for asset and deploy branching:---------------------------------
 # The branch where assets are deploying to
   ASSET_BRANCH: deploy-asset

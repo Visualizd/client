@@ -8,7 +8,7 @@ import Projects from '../components/Projects.vue';
 
 Vue.use(VueRouter)
 
-  const routes: Array<RouteConfig> = [
+const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'Main',
@@ -40,7 +40,7 @@ Vue.use(VueRouter)
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: process.env.ROUTER_MODE,
   base: process.env.BASE_URL,
   routes
 })

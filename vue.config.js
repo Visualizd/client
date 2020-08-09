@@ -1,5 +1,14 @@
 const baseConfig = {
   assetsDir: "assets",
+  chainWebpack: webpackConfig => {
+    webpackConfig.plugin("define").tap(defineConfig => {
+      const runtimeEnv = defineConfig[0]["process.env"];
+      const routerMode = JSON.stringify(process.env["ROUTER_MODE"] || "history");
+      runtimeEnv["ROUTER_MODE"] = routerMode;
+      console.log(`using router mode: ${routerMode}`);
+      return defineConfig;
+    })
+  }
 }
 
 const getDevConfig = () => {
