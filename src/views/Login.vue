@@ -45,18 +45,18 @@
 export default {
   data() {
     return {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
     };
   },
 
   methods: {
     test() {
-      this.username = 'Test';
+      this.username = "Test";
     },
 
     login() {
-      const baseURI = 'https://jsonplaceholder.typicode.com/users';
+      const baseURI = "https://jsonplaceholder.typicode.com/users";
       this.$http.get(baseURI)
         .then((result) => {
           this.username = result;
