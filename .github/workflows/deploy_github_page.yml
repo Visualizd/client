@@ -1,8 +1,10 @@
 name: Deploy github pages
+
 env: 
-# necessary for building production code
+# Necessary for building production code
 # Example: https://cdn.jsdelivr.net/gh/visualizd/client@deploy-asset/
   ASSET_PATH: "https://cdn.jsdelivr.net/gh/${{ github.repository }}@$ASSET_BRANCH/"
+
 # This is for deploy on github pages, as they have a /client/ prefix
 # Example final url: visualizd.github.io/client/
 # Example variable value: /client/
@@ -10,6 +12,12 @@ env:
 # necessory for asset and deploy branching:
   ASSET_BRANCH: deploy-asset
   DEPLOY_BRANCH: gh-pages
+
+# Git bot name
+  GIT_BOT_NAME: 0w0 Deploy Bot
+# See: https://github.community/t/github-actions-bot-email-address/17204/5
+  GIT_BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+  
 on: 
   workflow_dispatch:
   push:
@@ -67,7 +75,9 @@ jobs:
           ref: ${{ env.ASSET_BRANCH }}
       
       - name: Config git
-        run: git config user.name "0w0 Deploy Bot"
+        run: |
+          git config user.name $GIT_BOT_NAME
+          git config user.email $GIT_BOT_EMAIL
       
       - name: Download Assests
         uses: actions/download-artifact@v2
@@ -94,7 +104,9 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Config git
-        run: git config user.name "0w0 Deploy Bot"
+        run: |
+          git config user.name $GIT_BOT_NAME
+          git config user.email $GIT_BOT_EMAIL
       
       - name: Create orphan github pages branch
         run: git checkout --orphan $DEPLOY_BRANCH
