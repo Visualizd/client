@@ -14,7 +14,7 @@ env:
   DEPLOY_BRANCH: gh-pages
 
 # Git bot name
-  GIT_BOT_NAME: 0w0 Deploy Bot
+  GIT_BOT_NAME: \"0w0 Deploy Bot\"
 # See: https://github.community/t/github-actions-bot-email-address/17204/5
   GIT_BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
   
