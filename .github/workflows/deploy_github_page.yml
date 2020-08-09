@@ -1,0 +1,133 @@
+name: Deploy github pages
+
+env:
+# --------------Runtime config------------------------------------------------------------
+#  Vue.js router's mode, set to hash as github pages
+#  do not support "any" path matching yet
+  ROUTER_MODE: hash
+
+# --------------Necessory for asset and deploy branching:---------------------------------
+# The branch where assets are deploying to
+  ASSET_BRANCH: deploy-asset
+# The branch where production files (ex: index.html) are deploying to
+  DEPLOY_BRANCH: gh-pages
+
+# --------------Necessary for building production code------------------------------------
+# Example: https://cdn.jsdelivr.net/gh/visualizd/client@deploy-asset/
+  ASSET_PATH: "https://cdn.jsdelivr.net/gh/${{ github.repository }}@$ASSET_BRANCH/"
+
+# This is for deploy on github pages, as they have a /client/ prefix
+# Example final url: visualizd.github.io/client/
+# Example variable value: /client/
+  PUBLIC_PATH: "/${{ github.event.repository.name }}/"
+
+# --------------Git bot setup-------------------------------------------------------------
+  GIT_BOT_NAME: '"0w0 Deploy Bot"' # double quote must be reserved
+  GIT_BOT_EMAIL: '""' # left blank intentionally 
+  
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-production-files:
+    name: Build project (prod)
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout branch
+        uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+
+      - name: Install npm dependency
+        uses: bahmutov/npm-install@v1
+        
+      - name: Load build cache
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules/.cache
+          key: build-cache-${{ github.sha }}
+          restore-keys: build-cache-
+
+      - name: Run npm build script (prod, using jsdelivr)
+        run: npm run build:prod
+      
+      - name: Move assets to root folder
+        run: mv ./dist/assets ./assets
+      
+      - name: Upload assets
+        uses: actions/upload-artifact@v2
+        with:
+          name: Assets-${{ github.sha }}
+          path: ./assets
+      
+      - name: Upload deploy file
+        uses: actions/upload-artifact@v2
+        with:
+          name: Deployment-${{ github.sha }}
+          path: ./dist
+          
+  commit-assets:
+    name: Commit Assets
+    runs-on: ubuntu-latest
+    needs: [build-production-files]
+    steps:
+      
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ env.ASSET_BRANCH }}
+      
+      - name: Config git
+        run: |
+          git config user.name ${{ env.GIT_BOT_NAME }}
+          git config user.email ${{ env.GIT_BOT_EMAIL }}
+      
+      - name: Download Assests
+        uses: actions/download-artifact@v2
+        with:
+          name: "Assets-${{ github.sha }}"
+          path: ./assets
+          
+      - name: Commit and push assests if necessary
+        run: |
+         if [ -n "$(git status --porcelain)" ]; then
+            git add assets
+            git commit -m "Compiled deployment assest for $(git rev-parse --short $GITHUB_SHA) (0w0)"
+            git push origin HEAD:$ASSET_BRANCH --force
+         else
+           echo "No need to commit as there's no changes"
+         fi
+
+  deploy-github-page:
+    name: Deploy to github pages branch
+    runs-on: ubuntu-latest
+    needs: [build-production-files, commit-assets]
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      
+      - name: Config git
+        run: |
+          git config user.name ${{ env.GIT_BOT_NAME }}
+          git config user.email ${{ env.GIT_BOT_EMAIL }}
+      
+      - name: Create orphan github pages branch
+        run: git checkout --orphan $DEPLOY_BRANCH
+        
+      - name: Download deployment files
+        uses: actions/download-artifact@v2
+        with:
+          name: Deployment-${{ github.sha }}
+          path: ./dep
+        
+      - name: Add files to git
+        run: git --work-tree dep add --all
+        
+      - name: Commit and push deployment files to ${{ env.DEPLOY_BRANCH }}
+        run: |
+          git commit -m "Compiled deployment for $(git rev-parse --short $GITHUB_SHA) (0w0)"
+          git push origin HEAD:$DEPLOY_BRANCH --force
