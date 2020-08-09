@@ -26,10 +26,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ./node_modules/.cache
-          # anything should help
-          # if it causes trouble,
-          # just increment the trailling number
-          key: build-cache-0 
+          key: build-cache-${{ github.sha }}
+          restore-keys: build-cache-
 
       - name: Run npm build script (prod, using jsdelivr)
         run: npm run build:prod
