@@ -1,7 +1,13 @@
 name: Deploy github pages
 
 env: 
-# Necessary for building production code
+# --------------Necessory for asset and deploy branching:---------------------------------
+# The branch where assets are deploying to
+  ASSET_BRANCH: deploy-asset
+# The branch where production files (ex: index.html) are deploying to
+  DEPLOY_BRANCH: gh-pages
+
+# --------------Necessary for building production code------------------------------------
 # Example: https://cdn.jsdelivr.net/gh/visualizd/client@deploy-asset/
   ASSET_PATH: "https://cdn.jsdelivr.net/gh/${{ github.repository }}@$ASSET_BRANCH/"
 
@@ -9,14 +15,10 @@ env:
 # Example final url: visualizd.github.io/client/
 # Example variable value: /client/
   PUBLIC_PATH: "/${{ github.event.repository.name }}/"
-# necessory for asset and deploy branching:
-  ASSET_BRANCH: deploy-asset
-  DEPLOY_BRANCH: gh-pages
 
-# Git bot name
-  GIT_BOT_NAME: '"0w0 Deploy Bot"'
-# Blank ""
-  GIT_BOT_EMAIL: '""'
+# --------------Git bot setup-------------------------------------------------------------
+  GIT_BOT_NAME: '"0w0 Deploy Bot"' # double quote must be reserved
+  GIT_BOT_EMAIL: '""' # left blank intentionally 
   
 on: 
   workflow_dispatch:
