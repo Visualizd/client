@@ -76,8 +76,8 @@ jobs:
       
       - name: Config git
         run: |
-          git config user.name $GIT_BOT_NAME
-          git config user.email $GIT_BOT_EMAIL
+          git config user.name ${{ env.GIT_BOT_NAME }}
+          git config user.email ${{ env.GIT_BOT_EMAIL }}
       
       - name: Download Assests
         uses: actions/download-artifact@v2
@@ -105,8 +105,8 @@ jobs:
       
       - name: Config git
         run: |
-          git config user.name $GIT_BOT_NAME
-          git config user.email $GIT_BOT_EMAIL
+          git config user.name ${{ env.GIT_BOT_NAME }}
+          git config user.email ${{ env.GIT_BOT_EMAIL }}
       
       - name: Create orphan github pages branch
         run: git checkout --orphan $DEPLOY_BRANCH
