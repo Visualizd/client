@@ -9,6 +9,7 @@ env:
   PUBLIC_PATH: "/${{ github.event.repository.name }}/"
 # necessory for asset and deploy branching:
   ASSET_BRANCH: deploy-asset
+  DEPLOY_BRANCH: gh-pages
 on: 
   workflow_dispatch:
   push:
@@ -63,7 +64,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
-          ref: deploy-asset
+          ref: ${{ ASSET_BRANCH }}
       
       - name: Config git
         run: git config user.name "0w0 Deploy Bot"
@@ -96,7 +97,7 @@ jobs:
         run: git config user.name "0w0 Deploy Bot"
       
       - name: Create orphan github pages branch
-        run: git checkout --orphan gh-pages
+        run: git checkout --orphan ${{ DEPLOY_BRANCH }}
         
       - name: Download deployment files
         uses: actions/download-artifact@v2
@@ -110,4 +111,4 @@ jobs:
       - name: Commit and push deployment if necessary
         run: |
           git commit -m "Compiled deployment for $(git rev-parse --short $GITHUB_SHA) (0w0)"
-          git push origin HEAD:gh-pages --force
+          git push origin HEAD:${{ DEPLOY_BRANCH }} --force
