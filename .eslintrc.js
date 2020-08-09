@@ -26,9 +26,9 @@ module.exports = {
     ],
     // HTML code will exceed 100+ characters per line
     "max-len": [
-      "warn",
+      "error",
       {
-        code: 130,
+        code: 150,
       },
     ],
     /**
@@ -37,6 +37,7 @@ module.exports = {
      * see: https://stackoverflow.com/a/59268871/7574433
      *
      * missing ts extension for ts file in airbnb's config
+     // eslint-disable-next-line max-len
      * https://github.com/airbnb/javascript/blob/c5bee75b1b358a3749f1a6d38ee6fad73de28e29/packages/eslint-config-airbnb-base/rules/imports.js#L139-L143
      *
      */
