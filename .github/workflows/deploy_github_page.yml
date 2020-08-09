@@ -76,6 +76,7 @@ jobs:
       - name: Commit and push assests if necessary
         run: |
          if [ -n "$(git status --porcelain)" ]; then
+            git add ./assets
             git commit -m "Compiled deployment assest for $(git rev-parse --short $GITHUB_SHA) (0w0)"
             git push origin HEAD:${ASSET_BRANCH} --force
          else
