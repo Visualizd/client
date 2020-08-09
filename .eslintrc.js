@@ -17,7 +17,20 @@ module.exports = {
     "@typescript-eslint",
   ],
   rules: {
-    quotes: [2, "double", { allowTemplateLiterals: true }],
+    quotes: [
+      "error",
+      "double",
+      {
+        allowTemplateLiterals: true,
+      },
+    ],
+    // HTML code will exceed 100+ characters per line
+    "max-len": [
+      "warn",
+      {
+        code: 130,
+      },
+    ],
     /**
      * Fix report missing file extension when importing a package
      *
