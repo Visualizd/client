@@ -5,8 +5,8 @@ env:
   ASSET_PATH: "https://cdn.jsdelivr.net/gh/${{ github.repository }}@$ASSET_BRANCH/"
 # This is for deploy on github pages, as they have a /client/ prefix
 # Example final url: visualizd.github.io/client/
-# Example variable value: client/
-  PUBLIC_PATH: "${{ github.event.repository.name }}/"
+# Example variable value: /client/
+  PUBLIC_PATH: "/${{ github.event.repository.name }}/"
 # necessory for asset and deploy branching:
   ASSET_BRANCH: deploy-asset
 on: 
