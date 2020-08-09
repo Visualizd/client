@@ -34,7 +34,7 @@ jobs:
       - name: Run npm build script (prod, using jsdelivr)
         run: npm run build:prod
         env:
-          PUBLIC_PATH: "https://cdn.jsdelivr.net/gh/${{ github.repository }}@$ASSET_BRANCH/"
+          ASSET_PATH: "https://cdn.jsdelivr.net/gh/${{ github.repository }}@$ASSET_BRANCH/"
       
       - name: Move assets to root folder
         run: mv ./dist/assets ./assets
