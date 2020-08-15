@@ -17,11 +17,7 @@
                   </div>
                   <div class="form-group">
                       <label>Password</label>
-                      <input
-                        v-model="password"
-                        type="password"
-                        class="form-control form-control-lg"
-                      />
+                      <input v-model="password" type="password" class="form-control form-control-lg" />
                   </div>
 
                  <b-button @click="login" variant="dark">Submit</b-button>
