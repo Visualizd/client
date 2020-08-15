@@ -29,7 +29,7 @@
                   <button type="submit" class="btn btn-dark btn-lg btn-block">Sign Up</button>
 
                   <p>
-                      Already registered 
+                      Already registered
                       <router-link :to="{name: 'login'}">sign in?</router-link>
                   </p>
               </form>
@@ -41,11 +41,11 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {}
-        }
-    }
+export default {
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style scoped>

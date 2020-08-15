@@ -16,12 +16,12 @@
 
 <script>
 export default {
-     data() {
-      return {
-        variant: 'dark',
-      }
-    }
-}
+  data() {
+    return {
+      variant: "dark",
+    };
+  },
+};
 </script>
 
 <style scoped lang="scss">

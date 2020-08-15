@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <b-navbar type="dark" variant="primary" sticky="top"><!-- TODO: Make shadow appear when page is scrolled.  Shadow should not appear when the page has not been scrolled. -->
+    <!-- TODO: Make shadow appear when page is scrolled.  Shadow should not appear when the page has not been scrolled. -->
+    <b-navbar type="dark" variant="primary" sticky="top">
       <b-navbar-brand href="#">Logo</b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -24,7 +25,9 @@
           </b-nav-item-dropdown>
 
           <b-navbar-nav right>
-            <b-nav-item href="#"><font-awesome-icon icon="user-circle" style="font-size: 1.7em;"/></b-nav-item>
+            <b-nav-item href="#">
+              <font-awesome-icon icon="user-circle" style="font-size: 1.7em;"/>
+            </b-nav-item>
           </b-navbar-nav>
         </b-navbar-nav>
       </b-collapse>

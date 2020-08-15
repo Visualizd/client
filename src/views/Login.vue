@@ -23,7 +23,7 @@
                  <b-button @click="login" variant="dark">Submit</b-button>
 
                   <p>
-                      Already registered 
+                      Already registered
                       <!-- <router-link :to="{name: 'login'}">sign in?</router-link> -->
                   </p>
                   <p>
@@ -38,28 +38,28 @@
 </template>
 
 <script>
-    export default {
-        data() {
-          return {
-            username: "", 
-            password: "", 
-          }
-        },
-        
-        methods: {
-          test() {
-            this.username = "Test"
-          },
+export default {
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
 
-          login() {
-            const baseURI = 'https://jsonplaceholder.typicode.com/users'
-            this.$http.get(baseURI)
-            .then((result) => {
-              this.username = result;
-            })
-          }
-        }
-    }
+  methods: {
+    test() {
+      this.username = "Test";
+    },
+
+    login() {
+      const baseURI = "https://jsonplaceholder.typicode.com/users";
+      this.$http.get(baseURI)
+        .then((result) => {
+          this.username = result;
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>
