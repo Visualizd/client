@@ -1,13 +1,19 @@
 <template>
   <div id="wrapper">
     <div id="sidebar" class="mt-4 ml-3 mr-0">
-      <b-list-group style="width: 15em;">
-        <b-list-group-item button class="sidebar-active">Account</b-list-group-item>
-        <b-list-group-item button>Dashboard</b-list-group-item>
-        <b-list-group-item button>Projects</b-list-group-item>
-        <b-list-group-item button>Datasets</b-list-group-item>
+      <b-list-group class="shadow-sm" style="width: 15em;">
+        <b-list-group-item button class="sidebar-active">
+          <router-link to="/<username>">Dashboard</router-link>
+        </b-list-group-item>
+        <b-list-group-item button>
+          <router-link to="/<username>/projects">Projects</router-link>
+        </b-list-group-item>
+        <b-list-group-item button>
+          <router-link to="/<username>/datasets">Datasets</router-link>
+        </b-list-group-item>
       </b-list-group>
     </div>
+    <!-- container for content -->
     <b-container class="mt-3">
       <router-view />
     </b-container>

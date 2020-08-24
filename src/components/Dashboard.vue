@@ -27,7 +27,7 @@
           <!-- no-body is necessary for proper formatting of footer.  Body is manually added later. -->
           <b-card img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top no-body>
             <b-card-footer>
-              <b><a href="/link/to/project">New Project</a></b>
+              <b><router-link to="/<username>/projects/new">New Project</router-link></b>
             </b-card-footer>
           </b-card>
           <!-- no-body is necessary for proper formatting of footer.  Body is manually added later. -->
