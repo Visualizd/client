@@ -1,30 +1,30 @@
-<script>
-	export let name;
+<script lang="ts">
+	import * as d3 from 'd3';
+
+	import { onMount } from 'svelte';
+	import { nodes } from './store';
+
+	import Node from './Node.svelte';
+	import Curve from './Curve.svelte';
+	
+	export let name: string;
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>
+
+<title>{ name }</title>
+
+<svg width="1000" height="1000" style="border:1px solid black">
+	<Curve 	/>
+	{ #each $nodes as node }
+		<Node obj={node} />
+	{ /each }
+</svg>
+
+
+{ #each $nodes as node }
+	<p>{node.x}</p>
+{ /each }
