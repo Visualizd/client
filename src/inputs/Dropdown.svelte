@@ -2,7 +2,6 @@
     export let items = [];
     export let selected = 0;
 
-    let dropdownItemContainer;
     let showItems = false;
     
     let maxHeight = (35 * items.length) + "px";
@@ -42,6 +41,7 @@ div.dropdown-outer {
     font-family:'Montserrat', sans-serif;
     justify-content:space-between;
     cursor:pointer;
+    z-index:200;
     img {
         width:20px;
     }
@@ -58,6 +58,7 @@ div.dropdown-outer {
         background:#fff;
         animation:dropdown-expand .1s ease-in-out 1;
         overflow:hidden;
+        z-index:auto;
         div.dropdown-item {
             height:35px;
             line-height:35px;
