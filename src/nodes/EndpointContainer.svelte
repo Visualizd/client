@@ -34,7 +34,7 @@ div.endpoint-container {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap:45px;
+    gap:40px;
     &.input {
         left:0;
         transform:translateX(-50%);

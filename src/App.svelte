@@ -37,10 +37,10 @@
 
 <div class="node-container">
 	<N nodeType="textInput" title="Text 1"/>
+	<N nodeType="constantInput" title="Constant"/>
 	<N nodeType="dropdown" title="Dropdown 1"/>
 	<N nodeType="fileInput" title="File 1"/>
 	<N nodeType="fileInput" title="File 2"/>
-	<N nodeType="constantInput" title="Constant"/>
 	<N nodeType="dropdown" title="Dropdown 2"/>
 </div>
 
