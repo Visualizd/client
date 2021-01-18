@@ -38,8 +38,6 @@
         showEndpoints = true;
         showInputs = (x < 50);
         showOutputs = ((width - x) < 50);
-
-        console.log(showEndpoints, showInputs, showOutputs);
     }
 
 </script>
@@ -66,7 +64,7 @@ div.node {
     padding:10px 20px;
     &.node-focused {
         cursor:default;
-        max-height:500px;
+        max-height:800px;
         max-width:300px;
     }
 }
@@ -81,7 +79,7 @@ div.node-inner {
     .node-focused & {
         animation:changeOverflow .2s linear 1;
         overflow:visible;
-        max-height:300px;
+        max-height:800px;
     }
 }
 
