@@ -67,6 +67,21 @@ div.node {
         max-height:800px;
         max-width:300px;
     }
+    &.node-allow-drop {
+        box-shadow: 0px 0px 11px -2px rgba(112,157,255,0.75);
+    }
+    &.node-error {
+        border-color:rgb(255, 92, 92);
+        &.node-allow-drop {
+            box-shadow: 0px 0px 11px -2px rgba(255, 92, 92,0.75);
+        }
+    }
+    &.node-success {
+        border-color:rgb(34, 216, 110);
+        &.node-allow-drop {
+            box-shadow: 0px 0px 11px -2px rgba(34, 216, 110,0.75);
+        }
+    }
 }
 
 div.node-inner {

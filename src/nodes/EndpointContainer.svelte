@@ -3,14 +3,13 @@
 import Endpoint from './Endpoint.svelte';
 import {EndpointType} from './IEndpoint';
 
-import { fly } from 'svelte/transition';
+import { fade } from 'svelte/transition';
 
 export let endpoints = [];
 
 export let type:EndpointType = EndpointType.I;
 
 let typeClass = type === EndpointType.I ? "input" : "output";
-let transition = type === EndpointType.I ? -50 : 50;
 
 </script>
 
@@ -49,7 +48,7 @@ div.endpoint-container {
 
 <div 
     class="endpoint-container {typeClass}"
-    transition:fly="{{x:transition, duration: 200}}">
+    transition:fade="{{duration: 200}}">
     {#each endpoints as endpoint}
         <Endpoint endpoint={endpoint} />
     {/each}
