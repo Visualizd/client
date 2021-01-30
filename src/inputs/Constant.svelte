@@ -83,7 +83,11 @@ function handleMouseMove(e) {
         border: 1px solid rgb(185, 185, 185);
         margin:0;
         padding:0;
+        z-index:2000;
         &:focus-within {
+            position:absolute;
+            margin-left:-1px;
+            margin-top:-1px;
             border: 1px solid rgb(71, 104, 255);
             z-index:2000;
         }
