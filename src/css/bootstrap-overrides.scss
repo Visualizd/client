@@ -1,0 +1,9 @@
+// your variable overrides
+// modify theme colors map
+$theme-colors: (
+        "primary":#42b883,
+  //...other variables, you can find them in node_modules/bootstrap/scss/_variables.scss
+);
+
+// import to set changes
+@import "../../node_modules/bootstrap/scss/bootstrap";
