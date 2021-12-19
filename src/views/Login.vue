@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <div class="login-card card card-body">
+    <div class="login-card card card-body mt-4">
       <h3 class="card-title text-center">Login</h3>
       <div class="card-text">
         <form>
