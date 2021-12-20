@@ -1,6 +1,7 @@
 <template>
-  <div id="workflow-list" class="container">
-    <ProjectCard v-for="item in allProjects" :id="item.id" :title="item.title" class="mt-2"></ProjectCard>
+  <div id="workflow-list" class="container pt-3">
+    <h3>Projects</h3>
+    <ProjectCard v-for="item in allProjects" :key="item.id" :id="item.id" :title="item.title" class="mt-2"></ProjectCard>
   </div>
 </template>
 

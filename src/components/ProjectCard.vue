@@ -1,6 +1,6 @@
 <template>
   <div class="workflow-card card card-body">
-    <router-link :to="'/workflows/'+id"><span class="title">{{ title }}</span></router-link>
+    <router-link :to="'/workflows/'+id">{{ title }}</router-link>
   </div>
 </template>
 
@@ -15,7 +15,4 @@ export default class WorkflowCard extends Vue {
 </script>
 
 <style scoped>
-.title {
-
-}
 </style>
